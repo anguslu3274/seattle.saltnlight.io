@@ -7,18 +7,17 @@
     <!-- 添加Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <style>
-        /* 网站标题样式 */
+        /* 添加网站标题样式 */
         .site-title {
-            font-family: 'Montserrat', Arial, sans-serif;
+            font-family: 'Cinzel', serif;
             text-align: center;
-            font-size: 2.5rem;
+            font-size: 3rem;
             margin-bottom: 30px;
-            color: #222;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.08);
+            color: #333;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
             letter-spacing: 2px;
-            font-weight: 700;
         }
         
         /* 视频容器样式 */
@@ -44,12 +43,12 @@
             transition: opacity 0.5s ease;
         }
 
-        /* 主体样式 */
+        /* 更新主体样式 */
         body {
-            font-family: 'Montserrat', Arial, sans-serif;
+            font-family: 'Lora', serif;
             margin: 0;
             padding: 20px;
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.9); /* 半透明白色背景 */
         }
 
         /* 更新内容容器样式 */
@@ -74,7 +73,7 @@
             display: block;
         }
 
-        /* 标签按钮样式为现代风格 */
+        /* 更新标签按钮样式为中世纪主题 */
         .tabs {
             display: flex;
             margin-bottom: 20px;
@@ -82,7 +81,7 @@
             background: rgba(255, 255, 255, 0.5);
             border-radius: 5px 5px 0 0;
             padding: 5px;
-            font-family: 'Montserrat', Arial, sans-serif;
+            font-family: 'Cinzel', serif;
         }
         
         .tab-button {
@@ -90,19 +89,18 @@
             border: none;
             background: rgba(255, 255, 255, 0.3);
             cursor: pointer;
-            font-size: 1rem;
+            font-size: 16px;
             margin-right: 5px;
             border-radius: 3px;
-            font-family: 'Montserrat', Arial, sans-serif;
+            font-family: 'Cinzel', serif;
             letter-spacing: 1px;
-            font-weight: 600;
             transition: all 0.3s ease;
         }
         
         .tab-button.active {
             border-bottom: 2px solid #007bff;
             color: #007bff;
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.7); /* 活动按钮背景稍微不那么透明 */
         }
 
         /* 表单样式 */
@@ -133,83 +131,10 @@
         }
 
         h2 {
-            font-family: 'Montserrat', Arial, sans-serif;
-            color: #222;
+            font-family: 'Cinzel', serif;
+            color: #333;
             border-bottom: 1px solid rgba(0, 0, 0, 0.1);
             padding-bottom: 10px;
-            font-weight: 700;
-        }
-
-        /* 响应式优化 */
-        @media (max-width: 768px) {
-            .site-title {
-                font-size: 1.5rem;
-                margin-bottom: 18px;
-            }
-            .content-wrapper {
-                max-width: 100%;
-                margin: 0 0;
-                padding: 8px;
-                border-radius: 0;
-            }
-            .tab-content {
-                padding: 10px;
-                font-size: 1rem;
-            }
-            .tabs {
-                flex-wrap: nowrap;
-                overflow-x: auto;
-                padding: 2px;
-                font-size: 1rem;
-            }
-            .tab-button {
-                font-size: 1rem;
-                padding: 8px 12px;
-                margin-right: 2px;
-                min-width: 110px;
-                flex: 0 0 auto;
-            }
-            h2 {
-                font-size: 1.2rem;
-                padding-bottom: 6px;
-            }
-            .form-group {
-                margin-bottom: 10px;
-            }
-            input, textarea {
-                font-size: 1rem;
-                padding: 6px;
-            }
-            button[type="submit"] {
-                font-size: 1rem;
-                padding: 8px 12px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .site-title {
-                font-size: 1.1rem;
-                margin-bottom: 10px;
-            }
-            .tab-button {
-                font-size: 0.95rem;
-                padding: 6px 8px;
-                min-width: 90px;
-            }
-            .tab-content {
-                font-size: 0.95rem;
-            }
-        }
-
-        /* 视频背景在竖屏下适配 */
-        @media (max-width: 768px) and (orientation: portrait) {
-            .video-background {
-                min-width: 100vw;
-                min-height: 100vh;
-                width: 100vw;
-                height: 100vh;
-                object-fit: cover;
-            }
         }
     </style>
 </head>
