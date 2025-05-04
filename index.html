@@ -97,8 +97,15 @@
 <body>
     <!-- 更新视频背景部分 -->
     <video id="background-video" autoplay muted loop class="video-background">
+        <!-- 尝试多种格式和路径 -->
         <source id="video-source" src="videos/bible_reading.mp4" type="video/mp4">
-        Your browser does not support the video tag.
+        <source src="bible_reading.mp4" type="video/mp4">
+        <source src="./videos/bible_reading.mp4" type="video/mp4">
+        <source src="../videos/bible_reading.mp4" type="video/mp4">
+        <!-- 添加备用格式 -->
+        <source src="videos/bible_reading.webm" type="video/webm">
+        <!-- 移除JavaScript加载部分，直接使用HTML源 -->
+        Your browser does not support the video tag or the video file is missing.
     </video>
 
     <!-- 包装所有内容 -->
@@ -182,15 +189,6 @@
             e.preventDefault();
             alert('Form submitted!');
             this.reset();
-        });
-
-        // 更新为使用单一视频文件
-        document.addEventListener('DOMContentLoaded', function() {
-            // 设置视频源
-            document.getElementById('video-source').src = 'videos/bible_reading.mp4';
-            
-            // 重新加载视频元素
-            document.getElementById('background-video').load();
         });
     </script>
 </body>
