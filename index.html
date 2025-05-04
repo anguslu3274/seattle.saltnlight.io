@@ -1,1 +1,155 @@
-"Hello Seattle" 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seattle Information Page</title>
+    <style>
+        /* 基本样式 */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* 标签页样式 */
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .tab-button {
+            padding: 10px 20px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .tab-button.active {
+            border-bottom: 2px solid #007bff;
+            color: #007bff;
+        }
+
+        /* 内容区域样式 */
+        .tab-content {
+            display: none;
+            padding: 20px;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* 表单样式 */
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="tabs">
+        <button class="tab-button active" onclick="openTab('mission')">Mission Statement</button>
+        <button class="tab-button" onclick="openTab('staff')">Staff</button>
+        <button class="tab-button" onclick="openTab('contact')">Contact Us</button>
+    </div>
+
+    <div id="mission" class="tab-content active">
+        <h2>Our Mission</h2>
+        <p>This is where the mission statement content goes...</p>
+    </div>
+
+    <div id="staff" class="tab-content">
+        <h2>Our Staff</h2>
+        <div class="staff-members">
+            <div class="staff-member">
+                <h3>John Smith</h3>
+                <p>Position: General Manager</p>
+            </div>
+            <div class="staff-member">
+                <h3>Jane Doe</h3>
+                <p>Position: Project Manager</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="contact" class="tab-content">
+        <h2>Submit a Question</h2>
+        <form id="questionForm">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone:</label>
+                <input type="tel" id="phone" name="phone">
+            </div>
+
+            <div class="form-group">
+                <label for="question">Your Question:</label>
+                <textarea id="question" name="question" rows="4" required></textarea>
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        function openTab(tabName) {
+            // 隐藏所有标签页内容
+            var tabContents = document.getElementsByClassName('tab-content');
+            for (var i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove('active');
+            }
+
+            // 移除所有标签按钮的活动状态
+            var tabButtons = document.getElementsByClassName('tab-button');
+            for (var i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove('active');
+            }
+
+            // 显示选中的标签页内容
+            document.getElementById(tabName).classList.add('active');
+            
+            // 设置选中标签按钮的活动状态
+            event.currentTarget.classList.add('active');
+        }
+
+        // Form submission handler
+        document.getElementById('questionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Form submitted!');
+            this.reset();
+        });
+    </script>
+</body>
+</html> 
