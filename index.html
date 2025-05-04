@@ -26,44 +26,52 @@
             background: rgba(255, 255, 255, 0.9); /* 半透明白色背景 */
         }
 
-        /* 内容容器 */
+        /* 更新内容容器样式 */
         .content-wrapper {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.5); /* 更改为50%透明度 */
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
         }
 
-        /* 标签页样式 */
+        /* 更新标签页内容区域样式 */
+        .tab-content {
+            display: none;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.5); /* 添加50%透明度的背景 */
+            border-radius: 5px;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* 更新标签按钮样式 */
         .tabs {
             display: flex;
             margin-bottom: 20px;
-            border-bottom: 1px solid #ccc;
+            border-bottom: 1px solid rgba(204, 204, 204, 0.5); /* 半透明边框 */
+            background: rgba(255, 255, 255, 0.5); /* 添加半透明背景 */
+            border-radius: 5px 5px 0 0;
+            padding: 5px;
         }
 
         .tab-button {
             padding: 10px 20px;
             border: none;
-            background: none;
+            background: rgba(255, 255, 255, 0.3); /* 半透明按钮背景 */
             cursor: pointer;
             font-size: 16px;
+            margin-right: 5px;
+            border-radius: 3px;
         }
 
         .tab-button.active {
             border-bottom: 2px solid #007bff;
             color: #007bff;
-        }
-
-        /* 内容区域样式 */
-        .tab-content {
-            display: none;
-            padding: 20px;
-        }
-
-        .tab-content.active {
-            display: block;
+            background: rgba(255, 255, 255, 0.7); /* 活动按钮背景稍微不那么透明 */
         }
 
         /* 表单样式 */
