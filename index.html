@@ -3,8 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seattle Information Page</title>
+    <title>Seattle Salt and Light</title>
+    <!-- 添加Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <style>
+        /* 添加网站标题样式 */
+        .site-title {
+            font-family: 'Cinzel', serif;
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 30px;
+            color: #333;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            letter-spacing: 2px;
+        }
+        
         /* 视频容器样式 */
         .video-container {
             position: fixed;
@@ -30,7 +45,7 @@
 
         /* 更新主体样式 */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Lora', serif;
             margin: 0;
             padding: 20px;
             background: rgba(255, 255, 255, 0.9); /* 半透明白色背景 */
@@ -58,26 +73,30 @@
             display: block;
         }
 
-        /* 更新标签按钮样式 */
+        /* 更新标签按钮样式为中世纪主题 */
         .tabs {
             display: flex;
             margin-bottom: 20px;
-            border-bottom: 1px solid rgba(204, 204, 204, 0.5); /* 半透明边框 */
-            background: rgba(255, 255, 255, 0.5); /* 添加半透明背景 */
+            border-bottom: 1px solid rgba(204, 204, 204, 0.5);
+            background: rgba(255, 255, 255, 0.5);
             border-radius: 5px 5px 0 0;
             padding: 5px;
+            font-family: 'Cinzel', serif;
         }
-
+        
         .tab-button {
             padding: 10px 20px;
             border: none;
-            background: rgba(255, 255, 255, 0.3); /* 半透明按钮背景 */
+            background: rgba(255, 255, 255, 0.3);
             cursor: pointer;
             font-size: 16px;
             margin-right: 5px;
             border-radius: 3px;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
         }
-
+        
         .tab-button.active {
             border-bottom: 2px solid #007bff;
             color: #007bff;
@@ -110,6 +129,13 @@
             border-radius: 4px;
             cursor: pointer;
         }
+
+        h2 {
+            font-family: 'Cinzel', serif;
+            color: #333;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            padding-bottom: 10px;
+        }
     </style>
 </head>
 <body>
@@ -125,6 +151,9 @@
 
     <!-- 包装所有内容 -->
     <div class="content-wrapper">
+        <!-- 添加网站标题 -->
+        <h1 class="site-title">Seattle Salt and Light</h1>
+        
         <div class="tabs">
             <button class="tab-button active" onclick="openTab('mission')">Mission Statement</button>
             <button class="tab-button" onclick="openTab('staff')">Staff</button>
