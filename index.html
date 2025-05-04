@@ -253,12 +253,32 @@
             e.preventDefault();
 
             // 获取表单数据
-            const data = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
-                question: document.getElementById('question').value
-            };
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const question = document.getElementById('question').value.trim();
+
+            // 邮箱正则
+            const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+            // 手机号正则（国际和北美常见格式，允许空格、-、()，可根据需要调整）
+            const phoneRegex = /^(\+?\d{1,3}[-.\s]?)?(\(?\d{3}\)?[-.\s]?){1,2}\d{4}$/;
+
+            // 校验邮箱
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid email address.');
+                document.getElementById('email').focus();
+                return;
+            }
+
+            // 校验手机号（允许为空，不为空时必须合法）
+            if (phone && !phoneRegex.test(phone)) {
+                alert('Please enter a valid phone number.');
+                document.getElementById('phone').focus();
+                return;
+            }
+
+            // 校验通过，准备数据
+            const data = { name, email, phone, question };
 
             // 发送到 Google Apps Script
             fetch(GOOGLE_SCRIPT_URL, {
