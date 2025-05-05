@@ -56,6 +56,15 @@
             margin: 0;
             padding: 20px;
             background: rgba(255, 255, 255, 0.9); /* 半透明白色背景 */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         /* 更新内容容器样式 */
@@ -68,7 +77,7 @@
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
             position: relative;
             transition: min-height 0.5s ease;
-            margin-bottom: 60px;
+            margin-bottom: 20px; /* 减小底部间距 */
         }
 
         /* 更新标签页内容区域样式 */
@@ -204,11 +213,10 @@
             letter-spacing: 0.5px;
             font-family: 'Montserrat', Arial, sans-serif;
             user-select: none;
-            position: fixed;
-            bottom: 0;
-            left: 0;
+            position: relative; /* 改为相对定位 */
             z-index: 1;
             pointer-events: none;
+            margin-top: 20px; /* 添加上边距 */
         }
 
         /* 添加新的样式 */
@@ -241,106 +249,109 @@
     </style>
 </head>
 <body>
-    <!-- 更新视频背景部分，添加两个视频 -->
-    <div class="video-container">
-        <video id="video1" class="video-background" autoplay muted playsinline preload="auto">
-            <source src="assets/seattle_720.mp4" type="video/mp4">
-        </video>
-        <video id="video2" class="video-background" muted playsinline preload="auto" style="display:none;">
-            <source src="assets/bible_reading.mp4" type="video/mp4">
-        </video>
-    </div>
-
-    <!-- 包装所有内容 -->
-    <div class="content-wrapper">
-        <!-- 添加网站标题 -->
-        <h1 class="site-title">Seattle Salt and Light</h1>
-        
-        <div class="intro-text">
-            <p>Welcome to the Seattle Salt and Light Bible Training Series. We are dedicated to providing in-depth Bible study opportunities for believers, helping you better understand God's Word and live out your faith in daily life.</p>
-            <p>Our training courses are led by experienced pastors, using interactive teaching methods that enable you to:</p>
-            <ul style="list-style: none; padding: 0;">
-                <li>✦ Deeply understand the core teachings of the Bible</li>
-                <li>✦ Build a solid foundation of faith</li>
-                <li>✦ Develop spiritual insight</li>
-                <li>✦ Grow in your faith journey</li>
-            </ul>
-            <p>Click the title above or the tabs below to explore our mission and courses.</p>
-        </div>
-        
-        <div class="tabs">
-            <button class="tab-button active" onclick="openTab('mission')">Mission Statement</button>
-            <button class="tab-button" onclick="openTab('staff')">Staff</button>
-            <button class="tab-button" onclick="openTab('contact')">Contact Us</button>
+    <!-- 添加主容器 -->
+    <div class="main-container">
+        <!-- 更新视频背景部分，添加两个视频 -->
+        <div class="video-container">
+            <video id="video1" class="video-background" autoplay muted playsinline preload="auto">
+                <source src="assets/seattle_720.mp4" type="video/mp4">
+            </video>
+            <video id="video2" class="video-background" muted playsinline preload="auto" style="display:none;">
+                <source src="assets/bible_reading.mp4" type="video/mp4">
+            </video>
         </div>
 
-        <div id="mission" class="tab-content active">
-            <h2>Our Mission</h2>
-            <p>
-                Inspired by the transformative power of Revelation, Pastor Joshua is dedicated to teaching Bible study to believers in the Seattle area, fostering spiritual growth and understanding at no cost to participants. Supported by the generous funding of friends and family, our mission is to provide accessible, faith-centered education, empowering individuals to deepen their relationship with God and live out His Word.
-            </p>
-            <img src="assets/class.jpg" alt="Classroom with students and blackboard" style="width:100%;max-width:500px;border-radius:8px;margin:12px 0 24px 0;">
-            <p>
-                We are also committed to serving the community, sharing Christ's love through practical support, outreach, and acts of kindness, so that our faith is not only learned but lived out in service to others.
-            </p>
-            <img src="assets/serving.jpg" alt="Community serving by cleaning environment" style="width:100%;max-width:500px;border-radius:8px;margin:12px 0 24px 0;">
-        </div>
+        <!-- 包装所有内容 -->
+        <div class="content-wrapper">
+            <!-- 添加网站标题 -->
+            <h1 class="site-title">Seattle Salt and Light</h1>
+            
+            <div class="intro-text">
+                <p>Welcome to the Seattle Salt and Light Bible Training Series. We are dedicated to providing in-depth Bible study opportunities for believers, helping you better understand God's Word and live out your faith in daily life.</p>
+                <p>Our training courses are led by experienced pastors, using interactive teaching methods that enable you to:</p>
+                <ul style="list-style: none; padding: 0;">
+                    <li>✦ Deeply understand the core teachings of the Bible</li>
+                    <li>✦ Build a solid foundation of faith</li>
+                    <li>✦ Develop spiritual insight</li>
+                    <li>✦ Grow in your faith journey</li>
+                </ul>
+                <p>Click the title above or the tabs below to explore our mission and courses.</p>
+            </div>
+            
+            <div class="tabs">
+                <button class="tab-button active" onclick="openTab('mission')">Mission Statement</button>
+                <button class="tab-button" onclick="openTab('staff')">Staff</button>
+                <button class="tab-button" onclick="openTab('contact')">Contact Us</button>
+            </div>
 
-        <div id="staff" class="tab-content">
-            <h2>Our Staff</h2>
-            <div class="staff-members">
-                <div class="staff-member">
-                    <h3>Joshua Kim</h3>
-                    <p>Position: President</p>
+            <div id="mission" class="tab-content active">
+                <h2>Our Mission</h2>
+                <p>
+                    Inspired by the transformative power of Revelation, Pastor Joshua is dedicated to teaching Bible study to believers in the Seattle area, fostering spiritual growth and understanding at no cost to participants. Supported by the generous funding of friends and family, our mission is to provide accessible, faith-centered education, empowering individuals to deepen their relationship with God and live out His Word.
+                </p>
+                <img src="assets/class.jpg" alt="Classroom with students and blackboard" style="width:100%;max-width:500px;border-radius:8px;margin:12px 0 24px 0;">
+                <p>
+                    We are also committed to serving the community, sharing Christ's love through practical support, outreach, and acts of kindness, so that our faith is not only learned but lived out in service to others.
+                </p>
+                <img src="assets/serving.jpg" alt="Community serving by cleaning environment" style="width:100%;max-width:500px;border-radius:8px;margin:12px 0 24px 0;">
+            </div>
+
+            <div id="staff" class="tab-content">
+                <h2>Our Staff</h2>
+                <div class="staff-members">
+                    <div class="staff-member">
+                        <h3>Joshua Kim</h3>
+                        <p>Position: President</p>
+                    </div>
+                    <div class="staff-member">
+                        <h3>Oscar S</h3>
+                        <p>Position: Vice President</p>
+                    </div>
+                    <div class="staff-member">
+                        <h3>Angus Lu</h3>
+                        <p>Position: Vice President</p>
+                    </div>
                 </div>
-                <div class="staff-member">
-                    <h3>Oscar S</h3>
-                    <p>Position: Vice President</p>
-                </div>
-                <div class="staff-member">
-                    <h3>Angus Lu</h3>
-                    <p>Position: Vice President</p>
-                </div>
+            </div>
+
+            <div id="contact" class="tab-content">
+                <h2>Sign Up for Bible Training Series</h2>
+                <form id="questionForm">
+                    <div class="form-group">
+                        <label for="who">Who are you?</label>
+                        <select id="who" name="who" required>
+                            <option value="">-- Please select --</option>
+                            <option value="General Congregation">General Congregation</option>
+                            <option value="Leader/Pastor">Leader/Pastor</option>
+                            <option value="Aspire to be a Leader">Aspire to be a Leader</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone:</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="question">Your Question about the Bible Training Series:</label>
+                        <textarea id="question" name="question" rows="4" required></textarea>
+                    </div>
+                    <button type="submit">Submit</button>
+                </form>
             </div>
         </div>
 
-        <div id="contact" class="tab-content">
-            <h2>Sign Up for Bible Training Series</h2>
-            <form id="questionForm">
-                <div class="form-group">
-                    <label for="who">Who are you?</label>
-                    <select id="who" name="who" required>
-                        <option value="">-- Please select --</option>
-                        <option value="General Congregation">General Congregation</option>
-                        <option value="Leader/Pastor">Leader/Pastor</option>
-                        <option value="Aspire to be a Leader">Aspire to be a Leader</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="phone">Phone:</label>
-                    <input type="tel" id="phone" name="phone">
-                </div>
-                <div class="form-group">
-                    <label for="question">Your Question about the Bible Training Series:</label>
-                    <textarea id="question" name="question" rows="4" required></textarea>
-                </div>
-                <button type="submit">Submit</button>
-            </form>
-        </div>
+        <!-- 页脚版权信息 -->
+        <footer class="site-footer">
+            Copyright © 2025 Seattle Salt and Light - All Rights Reserved.
+        </footer>
     </div>
-
-    <!-- 页脚版权信息 -->
-    <footer class="site-footer">
-        Copyright © 2025 Seattle Salt and Light - All Rights Reserved.
-    </footer>
 
     <script>
         // 添加新的变量和函数
