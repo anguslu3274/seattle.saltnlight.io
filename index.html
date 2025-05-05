@@ -178,42 +178,60 @@
 
         <div id="mission" class="tab-content active">
             <h2>Our Mission</h2>
-            <p>Inspired by the transformative power of Revelation, Pastor Joshua is dedicated to teaching Bible study to believers in the Seattle area, fostering spiritual growth and understanding at no cost to participants. Supported by the generous funding of friends and family, our mission is to provide accessible, faith-centered education, empowering individuals to deepen their relationship with God and live out His Word.</p>
+            <img src="https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&w=800&fit=crop" alt="Classroom with students and blackboard" style="width:100%;max-width:500px;border-radius:8px;margin-bottom:16px;">
+            <p>
+                Inspired by the transformative power of Revelation, Pastor Joshua is dedicated to teaching Bible study to believers in the Seattle area, fostering spiritual growth and understanding at no cost to participants. Supported by the generous funding of friends and family, our mission is to provide accessible, faith-centered education, empowering individuals to deepen their relationship with God and live out His Word. 
+                <b>We are also committed to serving the community, sharing Christ's love through practical support, outreach, and acts of kindness, so that our faith is not only learned but lived out in service to others.</b>
+            </p>
+            <img src="https://images.pexels.com/photos/3185486/pexels-photo-3185486.jpeg?auto=compress&w=800&fit=crop" alt="Community serving by cleaning environment" style="width:100%;max-width:500px;border-radius:8px;margin-bottom:16px;">
         </div>
 
         <div id="staff" class="tab-content">
             <h2>Our Staff</h2>
             <div class="staff-members">
                 <div class="staff-member">
-                    <h3>Joshua</h3>
-                    <p>Position: General Pastor</p>
+                    <h3>Joshua Kim</h3>
+                    <p>Position: President</p>
+                </div>
+                <div class="staff-member">
+                    <h3>Oscar S</h3>
+                    <p>Position: Vice President</p>
+                </div>
+                <div class="staff-member">
+                    <h3>Angus Lu</h3>
+                    <p>Position: Vice President</p>
                 </div>
             </div>
         </div>
 
         <div id="contact" class="tab-content">
-            <h2>Submit a Question</h2>
+            <h2>Sign Up for Bible Training Series</h2>
             <form id="questionForm">
+                <div class="form-group">
+                    <label for="who">Who are you?</label>
+                    <select id="who" name="who" required>
+                        <option value="">-- Please select --</option>
+                        <option value="General Congregation">General Congregation</option>
+                        <option value="Leader/Pastor">Leader/Pastor</option>
+                        <option value="Aspire to be a Leader">Aspire to be a Leader</option>
+                    </select>
+                </div>
                 <div class="form-group">
                     <label for="name">Name:</label>
                     <input type="text" id="name" name="name" required>
                 </div>
-
                 <div class="form-group">
                     <label for="email">Email:</label>
                     <input type="email" id="email" name="email" required>
                 </div>
-
                 <div class="form-group">
                     <label for="phone">Phone:</label>
                     <input type="tel" id="phone" name="phone">
                 </div>
-
                 <div class="form-group">
-                    <label for="question">Your Question:</label>
+                    <label for="question">Your Question about the Bible Training Series:</label>
                     <textarea id="question" name="question" rows="4" required></textarea>
                 </div>
-
                 <button type="submit">Submit</button>
             </form>
         </div>
