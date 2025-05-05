@@ -66,20 +66,24 @@
             background: rgba(255, 255, 255, 0.5); /* 更改为50%透明度 */
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+            min-height: 400px;
         }
 
         /* 更新标签页内容区域样式 */
         .tab-content {
-            display: none;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.5); /* 添加50%透明度的背景 */
-            border-radius: 5px;
-            opacity: 1;
-            transform: translateY(0);
+            opacity: 0;
+            transform: translateY(20px);
             transition: opacity 0.5s ease, transform 0.5s ease;
+            display: none;
+            position: absolute;
+            width: 100%;
+            left: 0;
         }
 
         .tab-content.active {
+            opacity: 1;
+            transform: translateY(0);
             display: block;
         }
 
@@ -101,14 +105,15 @@
             opacity: 1;
             transform: translateY(0);
             transition: opacity 0.5s ease, transform 0.5s ease;
+            margin-top: 30px;
+            position: relative;
+            z-index: 1;
         }
-        
+
         .tabs.hidden {
-            opacity: 0;
-            transform: translateY(-20px);
-            display: none;
+            opacity: 0.3;
         }
-        
+
         .tab-button {
             padding: 10px 20px;
             border: none;
@@ -120,12 +125,27 @@
             font-family: 'Cinzel', serif;
             letter-spacing: 1px;
             transition: all 0.3s ease;
+            opacity: 0.7;
         }
-        
+
+        .tabs.hidden .tab-button {
+            opacity: 0.3;
+        }
+
+        .tabs.hidden .tab-button:hover {
+            opacity: 0.7;
+        }
+
         .tab-button.active {
             border-bottom: 2px solid #007bff;
             color: #007bff;
-            background: rgba(255, 255, 255, 0.7); /* 活动按钮背景稍微不那么透明 */
+            background: rgba(255, 255, 255, 0.7);
+            opacity: 1;
+        }
+
+        .tab-button:hover {
+            opacity: 1;
+            transform: translateY(-2px);
         }
 
         /* 表单样式 */
@@ -191,6 +211,9 @@
             transform: translateY(20px);
             transition: opacity 0.5s ease, transform 0.5s ease;
             display: none;
+            position: absolute;
+            width: 100%;
+            left: 0;
         }
 
         .intro-text.visible {
@@ -217,15 +240,15 @@
         <h1 class="site-title">Seattle Salt and Light</h1>
         
         <div class="intro-text">
-            <p>欢迎来到西雅图盐与光圣经培训系列。我们致力于为信徒提供深入的圣经学习机会，帮助您更好地理解神的话语，并在日常生活中活出信仰。</p>
-            <p>我们的培训课程由经验丰富的牧师带领，采用互动式教学方法，让您能够：</p>
+            <p>Welcome to the Seattle Salt and Light Bible Training Series. We are dedicated to providing in-depth Bible study opportunities for believers, helping you better understand God's Word and live out your faith in daily life.</p>
+            <p>Our training courses are led by experienced pastors, using interactive teaching methods that enable you to:</p>
             <ul style="list-style: none; padding: 0;">
-                <li>✦ 深入理解圣经的核心教导</li>
-                <li>✦ 建立坚实的信仰基础</li>
-                <li>✦ 培养属灵洞察力</li>
-                <li>✦ 在信仰生活中成长</li>
+                <li>✦ Deeply understand the core teachings of the Bible</li>
+                <li>✦ Build a solid foundation of faith</li>
+                <li>✦ Develop spiritual insight</li>
+                <li>✦ Grow in your faith journey</li>
             </ul>
-            <p>点击上方标题或下方标签页开始探索我们的使命和课程。</p>
+            <p>Click the title above or the tabs below to explore our mission and courses.</p>
         </div>
         
         <div class="tabs">
@@ -312,9 +335,15 @@
 
         // 初始化页面状态
         function initializePage() {
-            introText.classList.add('visible');
-            tabs.classList.add('hidden');
-            tabContents.forEach(content => content.classList.add('hidden'));
+            introText.style.display = 'block';
+            setTimeout(() => {
+                introText.classList.add('visible');
+                tabs.classList.add('hidden');
+            }, 10);
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+                content.style.display = 'none';
+            });
         }
 
         // 切换显示状态
@@ -322,19 +351,35 @@
             isIntroVisible = !isIntroVisible;
             
             if (isIntroVisible) {
-                // 显示介绍文本，隐藏标签页和内容
-                introText.classList.add('visible');
-                tabs.classList.add('hidden');
-                tabContents.forEach(content => content.classList.add('hidden'));
+                // 先隐藏所有标签内容
+                tabContents.forEach(content => {
+                    content.classList.remove('active');
+                    content.style.display = 'none';
+                });
+                
+                // 显示介绍文本
+                introText.style.display = 'block';
+                // 使用setTimeout确保display:block生效后再添加动画类
+                setTimeout(() => {
+                    introText.classList.add('visible');
+                    tabs.classList.add('hidden');
+                }, 10);
             } else {
-                // 隐藏介绍文本，显示标签页
+                // 隐藏介绍文本
                 introText.classList.remove('visible');
-                tabs.classList.remove('hidden');
-                // 显示当前活动的标签页内容
-                const activeTab = document.querySelector('.tab-content.active');
-                if (activeTab) {
-                    activeTab.classList.remove('hidden');
-                }
+                // 等待动画完成后隐藏元素
+                setTimeout(() => {
+                    introText.style.display = 'none';
+                    tabs.classList.remove('hidden');
+                    // 显示当前活动的标签页内容
+                    const activeTab = document.querySelector('.tab-content.active');
+                    if (activeTab) {
+                        activeTab.style.display = 'block';
+                        setTimeout(() => {
+                            activeTab.classList.remove('hidden');
+                        }, 10);
+                    }
+                }, 500);
             }
         }
 
@@ -343,29 +388,38 @@
 
         // 修改openTab函数
         function openTab(tabName) {
+            // 隐藏介绍文本
             isIntroVisible = false;
             introText.classList.remove('visible');
-            tabs.classList.remove('hidden');
-
-            // 隐藏所有标签页内容
-            tabContents.forEach(content => {
-                content.classList.remove('active');
-                content.classList.add('hidden');
-            });
-
-            // 移除所有标签按钮的活动状态
-            var tabButtons = document.getElementsByClassName('tab-button');
-            for (var i = 0; i < tabButtons.length; i++) {
-                tabButtons[i].classList.remove('active');
-            }
-
-            // 显示选中的标签页内容
-            const selectedTab = document.getElementById(tabName);
-            selectedTab.classList.add('active');
-            selectedTab.classList.remove('hidden');
             
-            // 设置选中标签按钮的活动状态
-            event.currentTarget.classList.add('active');
+            // 等待动画完成后隐藏介绍文本
+            setTimeout(() => {
+                introText.style.display = 'none';
+                tabs.classList.remove('hidden');
+
+                // 隐藏所有标签页内容
+                tabContents.forEach(content => {
+                    content.classList.remove('active');
+                    content.style.display = 'none';
+                });
+
+                // 移除所有标签按钮的活动状态
+                var tabButtons = document.getElementsByClassName('tab-button');
+                for (var i = 0; i < tabButtons.length; i++) {
+                    tabButtons[i].classList.remove('active');
+                }
+
+                // 显示选中的标签页内容
+                const selectedTab = document.getElementById(tabName);
+                selectedTab.style.display = 'block';
+                // 使用setTimeout确保display:block生效后再添加动画类
+                setTimeout(() => {
+                    selectedTab.classList.add('active');
+                }, 10);
+                
+                // 设置选中标签按钮的活动状态
+                event.currentTarget.classList.add('active');
+            }, 500);
         }
 
         // 页面加载时初始化
