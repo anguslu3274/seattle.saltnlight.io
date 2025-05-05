@@ -157,10 +157,10 @@
 <body>
     <!-- 更新视频背景部分，添加两个视频 -->
     <div class="video-container">
-        <video id="video1" class="video-background" autoplay muted>
+        <video id="video1" class="video-background" autoplay muted playsinline preload="auto">
             <source src="assets/seattle_720.mp4" type="video/mp4">
         </video>
-        <video id="video2" class="video-background" muted style="display:none;">
+        <video id="video2" class="video-background" muted playsinline preload="auto" style="display:none;">
             <source src="assets/bible_reading.mp4" type="video/mp4">
         </video>
     </div>
@@ -336,6 +336,19 @@
         // 获取视频元素
         const video1 = document.getElementById('video1');
         const video2 = document.getElementById('video2');
+        
+        // 添加视频加载事件处理
+        video1.addEventListener('loadeddata', function() {
+            video1.play().catch(function(error) {
+                console.log("Video play failed:", error);
+            });
+        });
+        
+        video2.addEventListener('loadeddata', function() {
+            video2.play().catch(function(error) {
+                console.log("Video play failed:", error);
+            });
+        });
         
         // 当第一个视频结束时，切换到第二个视频
         video1.addEventListener('ended', function() {
