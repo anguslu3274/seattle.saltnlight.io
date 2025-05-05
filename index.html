@@ -78,12 +78,12 @@
             transition: opacity 0.5s ease, transform 0.5s ease;
             display: none;
             position: absolute;
-            width: calc(100% - 40px); /* 减去padding */
+            width: calc(100% - 40px);
             left: 0;
             padding: 20px;
             background: rgba(255, 255, 255, 0.5);
             border-radius: 0 0 5px 5px;
-            margin-top: -1px; /* 消除与tabs之间的间隙 */
+            margin-top: -1px;
         }
 
         .tab-content.active {
@@ -101,11 +101,11 @@
         /* 更新标签按钮样式为中世纪主题 */
         .tabs {
             display: flex;
-            margin-bottom: 0; /* 移除底部间距 */
+            margin-bottom: 0;
             border-bottom: 1px solid rgba(204, 204, 204, 0.5);
             background: rgba(255, 255, 255, 0.5);
             border-radius: 5px 5px 0 0;
-            padding: 5px;
+            padding: 5px 20px; /* 调整内边距与内容对齐 */
             font-family: 'Cinzel', serif;
             opacity: 1;
             transform: translateY(0);
@@ -126,7 +126,7 @@
             cursor: pointer;
             font-size: 16px;
             margin-right: 5px;
-            border-radius: 3px 3px 0 0; /* 只圆角顶部 */
+            border-radius: 3px 3px 0 0;
             font-family: 'Cinzel', serif;
             letter-spacing: 1px;
             transition: all 0.3s ease;
@@ -221,8 +221,11 @@
             transition: opacity 0.5s ease, transform 0.5s ease;
             display: none;
             position: absolute;
-            width: 100%;
+            width: calc(100% - 40px);
             left: 0;
+            right: 0;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .intro-text.visible {
