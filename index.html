@@ -63,11 +63,12 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
-            background: rgba(255, 255, 255, 0.5); /* 更改为50%透明度 */
+            background: rgba(255, 255, 255, 0.5);
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
             position: relative;
             min-height: 400px;
+            margin-bottom: 60px; /* 为页脚留出空间 */
         }
 
         /* 更新标签页内容区域样式 */
@@ -77,8 +78,12 @@
             transition: opacity 0.5s ease, transform 0.5s ease;
             display: none;
             position: absolute;
-            width: 100%;
+            width: calc(100% - 40px); /* 减去padding */
             left: 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 0 0 5px 5px;
+            margin-top: -1px; /* 消除与tabs之间的间隙 */
         }
 
         .tab-content.active {
@@ -96,7 +101,7 @@
         /* 更新标签按钮样式为中世纪主题 */
         .tabs {
             display: flex;
-            margin-bottom: 20px;
+            margin-bottom: 0; /* 移除底部间距 */
             border-bottom: 1px solid rgba(204, 204, 204, 0.5);
             background: rgba(255, 255, 255, 0.5);
             border-radius: 5px 5px 0 0;
@@ -121,7 +126,7 @@
             cursor: pointer;
             font-size: 16px;
             margin-right: 5px;
-            border-radius: 3px;
+            border-radius: 3px 3px 0 0; /* 只圆角顶部 */
             font-family: 'Cinzel', serif;
             letter-spacing: 1px;
             transition: all 0.3s ease;
@@ -141,6 +146,7 @@
             color: #007bff;
             background: rgba(255, 255, 255, 0.7);
             opacity: 1;
+            border-radius: 3px 3px 0 0; /* 只圆角顶部 */
         }
 
         .tab-button:hover {
@@ -193,8 +199,11 @@
             letter-spacing: 0.5px;
             font-family: 'Montserrat', Arial, sans-serif;
             user-select: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
             z-index: 1;
-            pointer-events: none; /* 不影响页面其他元素点击 */
+            pointer-events: none;
         }
 
         /* 添加新的样式 */
