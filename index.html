@@ -19,6 +19,12 @@
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.13);
             letter-spacing: 2px;
             font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .site-title:hover {
+            transform: scale(1.05);
         }
         
         /* 视频容器样式 */
@@ -68,10 +74,19 @@
             padding: 20px;
             background: rgba(255, 255, 255, 0.5); /* 添加50%透明度的背景 */
             border-radius: 5px;
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.5s ease, transform 0.5s ease;
         }
 
         .tab-content.active {
             display: block;
+        }
+
+        .tab-content.hidden {
+            opacity: 0;
+            transform: translateY(20px);
+            display: none;
         }
 
         /* 更新标签按钮样式为中世纪主题 */
@@ -83,6 +98,15 @@
             border-radius: 5px 5px 0 0;
             padding: 5px;
             font-family: 'Cinzel', serif;
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        
+        .tabs.hidden {
+            opacity: 0;
+            transform: translateY(-20px);
+            display: none;
         }
         
         .tab-button {
@@ -152,6 +176,28 @@
             z-index: 1;
             pointer-events: none; /* 不影响页面其他元素点击 */
         }
+
+        /* 添加新的样式 */
+        .intro-text {
+            font-family: 'Lora', serif;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: rgba(0, 0, 0, 0.7);
+            text-align: center;
+            margin: 20px auto;
+            max-width: 800px;
+            padding: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            display: none;
+        }
+
+        .intro-text.visible {
+            opacity: 1;
+            transform: translateY(0);
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -169,6 +215,18 @@
     <div class="content-wrapper">
         <!-- 添加网站标题 -->
         <h1 class="site-title">Seattle Salt and Light</h1>
+        
+        <div class="intro-text">
+            <p>欢迎来到西雅图盐与光圣经培训系列。我们致力于为信徒提供深入的圣经学习机会，帮助您更好地理解神的话语，并在日常生活中活出信仰。</p>
+            <p>我们的培训课程由经验丰富的牧师带领，采用互动式教学方法，让您能够：</p>
+            <ul style="list-style: none; padding: 0;">
+                <li>✦ 深入理解圣经的核心教导</li>
+                <li>✦ 建立坚实的信仰基础</li>
+                <li>✦ 培养属灵洞察力</li>
+                <li>✦ 在信仰生活中成长</li>
+            </ul>
+            <p>点击上方标题或下方标签页开始探索我们的使命和课程。</p>
+        </div>
         
         <div class="tabs">
             <button class="tab-button active" onclick="openTab('mission')">Mission Statement</button>
@@ -245,12 +303,55 @@
     </footer>
 
     <script>
-        function openTab(tabName) {
-            // 隐藏所有标签页内容
-            var tabContents = document.getElementsByClassName('tab-content');
-            for (var i = 0; i < tabContents.length; i++) {
-                tabContents[i].classList.remove('active');
+        // 添加新的变量和函数
+        let isIntroVisible = true;
+        const introText = document.querySelector('.intro-text');
+        const tabs = document.querySelector('.tabs');
+        const siteTitle = document.querySelector('.site-title');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        // 初始化页面状态
+        function initializePage() {
+            introText.classList.add('visible');
+            tabs.classList.add('hidden');
+            tabContents.forEach(content => content.classList.add('hidden'));
+        }
+
+        // 切换显示状态
+        function toggleDisplay() {
+            isIntroVisible = !isIntroVisible;
+            
+            if (isIntroVisible) {
+                // 显示介绍文本，隐藏标签页和内容
+                introText.classList.add('visible');
+                tabs.classList.add('hidden');
+                tabContents.forEach(content => content.classList.add('hidden'));
+            } else {
+                // 隐藏介绍文本，显示标签页
+                introText.classList.remove('visible');
+                tabs.classList.remove('hidden');
+                // 显示当前活动的标签页内容
+                const activeTab = document.querySelector('.tab-content.active');
+                if (activeTab) {
+                    activeTab.classList.remove('hidden');
+                }
             }
+        }
+
+        // 为标题添加点击事件
+        siteTitle.addEventListener('click', toggleDisplay);
+
+        // 修改openTab函数
+        function openTab(tabName) {
+            isIntroVisible = false;
+            introText.classList.remove('visible');
+            tabs.classList.remove('hidden');
+
+            // 隐藏所有标签页内容
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+                content.classList.add('hidden');
+            });
 
             // 移除所有标签按钮的活动状态
             var tabButtons = document.getElementsByClassName('tab-button');
@@ -259,11 +360,16 @@
             }
 
             // 显示选中的标签页内容
-            document.getElementById(tabName).classList.add('active');
+            const selectedTab = document.getElementById(tabName);
+            selectedTab.classList.add('active');
+            selectedTab.classList.remove('hidden');
             
             // 设置选中标签按钮的活动状态
             event.currentTarget.classList.add('active');
         }
+
+        // 页面加载时初始化
+        window.addEventListener('load', initializePage);
 
         // Google Apps Script Web App 地址
         const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/1CJYCT_Qf-k-f-bp1cFSCnBpsB0kZruWB-HleoRm1A1w/exec';
