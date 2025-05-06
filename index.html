@@ -348,7 +348,6 @@
                     <li>✦ Develop spiritual insight</li>
                     <li>✦ Grow in your faith journey</li>
                 </ul>
-                <p>Click the title above or the tabs below to explore our mission and courses.</p>
             </div>
             
             <div class="tabs">
@@ -455,52 +454,31 @@
             }
         }
 
-        // 切换显示状态
+        // 修改toggleDisplay函数
         function toggleDisplay() {
-            isIntroVisible = !isIntroVisible;
             const contentWrapper = document.querySelector('.content-wrapper');
             
-            if (isIntroVisible) {
-                // 先隐藏所有标签内容
-                tabContents.forEach(content => {
-                    content.classList.remove('active');
-                    content.style.display = 'none';
-                });
-                
-                // 移除所有标签按钮的活动状态
-                var tabButtons = document.getElementsByClassName('tab-button');
-                for (var i = 0; i < tabButtons.length; i++) {
-                    tabButtons[i].classList.remove('active');
-                }
-                
-                // 显示介绍文本
-                introText.style.display = 'block';
-                // 使用setTimeout确保display:block生效后再添加动画类
-                setTimeout(() => {
-                    introText.classList.add('visible');
-                    tabs.classList.add('hidden');
-                    // 调整容器高度
-                    contentWrapper.style.minHeight = 'auto';
-                }, 10);
-            } else {
-                // 隐藏介绍文本
-                introText.classList.remove('visible');
-                // 等待动画完成后隐藏元素
-                setTimeout(() => {
-                    introText.style.display = 'none';
-                    tabs.classList.remove('hidden');
-                    // 显示当前活动的标签页内容
-                    const activeTab = document.querySelector('.tab-content.active');
-                    if (activeTab) {
-                        activeTab.style.display = 'block';
-                        setTimeout(() => {
-                            activeTab.classList.remove('hidden');
-                            // 调整容器高度
-                            contentWrapper.style.minHeight = activeTab.offsetHeight + 100 + 'px';
-                        }, 10);
-                    }
-                }, 500);
+            // 隐藏所有标签内容
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+                content.style.display = 'none';
+            });
+            
+            // 移除所有标签按钮的活动状态
+            var tabButtons = document.getElementsByClassName('tab-button');
+            for (var i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove('active');
             }
+            
+            // 显示介绍文本
+            introText.style.display = 'block';
+            // 使用setTimeout确保display:block生效后再添加动画类
+            setTimeout(() => {
+                introText.classList.add('visible');
+                tabs.classList.add('hidden');
+                // 调整容器高度
+                contentWrapper.style.minHeight = 'auto';
+            }, 10);
         }
 
         // 为标题添加点击事件
