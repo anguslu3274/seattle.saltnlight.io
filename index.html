@@ -137,21 +137,21 @@
         }
 
         .tab-button {
-            padding: 12px 25px; /* 增加按钮大小 */
+            padding: 12px 25px;
             border: none;
             background: rgba(255, 255, 255, 0.5);
             cursor: pointer;
             font-size: 16px;
-            margin: 0 8px; /* 增加按钮间距 */
-            border-radius: 25px; /* 更圆润的边角 */
+            margin: 0 8px;
+            border-radius: 8px; /* 减小圆角程度 */
             font-family: 'Cinzel', serif;
             letter-spacing: 1px;
             transition: all 0.3s ease;
             opacity: 0.8;
-            min-width: 140px; /* 增加最小宽度 */
+            min-width: 140px;
             text-align: center;
             color: rgba(0, 0, 0, 0.8);
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 添加轻微阴影 */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         .tabs.hidden .tab-button {
@@ -285,6 +285,7 @@
                 font-size: 15px;
                 min-width: 120px;
                 margin: 0 5px;
+                border-radius: 6px; /* 移动端稍微减小圆角 */
             }
         }
 
@@ -315,6 +316,7 @@
                 font-size: 14px;
                 min-width: 100px;
                 margin: 0 4px;
+                border-radius: 5px; /* 手机端进一步减小圆角 */
             }
         }
     </style>
@@ -446,6 +448,11 @@
                 content.classList.remove('active');
                 content.style.display = 'none';
             });
+            // 确保初始状态下没有激活的标签按钮
+            var tabButtons = document.getElementsByClassName('tab-button');
+            for (var i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove('active');
+            }
         }
 
         // 切换显示状态
@@ -459,6 +466,12 @@
                     content.classList.remove('active');
                     content.style.display = 'none';
                 });
+                
+                // 移除所有标签按钮的活动状态
+                var tabButtons = document.getElementsByClassName('tab-button');
+                for (var i = 0; i < tabButtons.length; i++) {
+                    tabButtons[i].classList.remove('active');
+                }
                 
                 // 显示介绍文本
                 introText.style.display = 'block';
@@ -528,7 +541,8 @@
                 }, 10);
                 
                 // 设置选中标签按钮的活动状态
-                event.currentTarget.classList.add('active');
+                const clickedButton = event.currentTarget;
+                clickedButton.classList.add('active');
             }, 500);
         }
 
