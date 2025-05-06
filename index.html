@@ -137,45 +137,48 @@
         }
 
         .tab-button {
-            padding: 10px 20px;
+            padding: 12px 25px; /* 增加按钮大小 */
             border: none;
-            background: rgba(255, 255, 255, 0.5); /* 提高背景不透明度 */
+            background: rgba(255, 255, 255, 0.5);
             cursor: pointer;
             font-size: 16px;
-            margin: 0 5px;
-            border-radius: 3px 3px 0 0;
+            margin: 0 8px; /* 增加按钮间距 */
+            border-radius: 25px; /* 更圆润的边角 */
             font-family: 'Cinzel', serif;
             letter-spacing: 1px;
             transition: all 0.3s ease;
-            opacity: 0.8; /* 提高默认不透明度 */
-            min-width: 120px;
+            opacity: 0.8;
+            min-width: 140px; /* 增加最小宽度 */
             text-align: center;
-            color: rgba(0, 0, 0, 0.8); /* 提高文字不透明度 */
+            color: rgba(0, 0, 0, 0.8);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 添加轻微阴影 */
         }
 
         .tabs.hidden .tab-button {
-            opacity: 0.8; /* 提高隐藏状态下的不透明度 */
-            background: rgba(255, 255, 255, 0.6); /* 提高背景不透明度 */
+            opacity: 0.8;
+            background: rgba(255, 255, 255, 0.6);
         }
 
         .tabs.hidden .tab-button:hover {
             opacity: 1;
             transform: translateY(-2px);
-            background: rgba(255, 255, 255, 0.8); /* 提高悬停时的背景不透明度 */
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* 悬停时增加阴影 */
         }
 
         .tab-button:hover {
             opacity: 1;
             transform: translateY(-2px);
             background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
         }
 
         .tab-button.active {
-            border-bottom: 2px solid #007bff;
-            color: #007bff;
-            background: rgba(255, 255, 255, 0.8);
+            border: none;
+            color: #fff; /* 白色文字 */
+            background: #007bff; /* 蓝色背景 */
             opacity: 1;
-            border-radius: 3px 3px 0 0;
+            box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3); /* 蓝色阴影 */
         }
 
         /* 表单样式 */
@@ -278,9 +281,10 @@
             }
 
             .tab-button {
-                padding: 8px 15px;
-                font-size: 14px;
-                min-width: 100px;
+                padding: 10px 20px;
+                font-size: 15px;
+                min-width: 120px;
+                margin: 0 5px;
             }
         }
 
@@ -307,10 +311,10 @@
             }
 
             .tab-button {
-                padding: 6px 12px;
-                font-size: 13px;
-                min-width: 80px;
-                margin: 0 3px;
+                padding: 8px 16px;
+                font-size: 14px;
+                min-width: 100px;
+                margin: 0 4px;
             }
         }
     </style>
