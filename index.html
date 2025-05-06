@@ -54,8 +54,8 @@
         body {
             font-family: 'Lora', serif;
             margin: 0;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.9); /* 半透明白色背景 */
+            padding: 0; /* 移除body的padding */
+            background: rgba(255, 255, 255, 0.9);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -65,6 +65,9 @@
             flex: 1;
             display: flex;
             flex-direction: column;
+            padding: 20px; /* 添加主容器的padding */
+            box-sizing: border-box;
+            width: 100%;
         }
 
         /* 更新内容容器样式 */
@@ -77,7 +80,9 @@
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
             position: relative;
             transition: min-height 0.5s ease;
-            margin-bottom: 20px; /* 减小底部间距 */
+            margin-bottom: 20px;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         /* 更新标签页内容区域样式 */
@@ -87,8 +92,8 @@
             transition: opacity 0.5s ease, transform 0.5s ease;
             display: none;
             position: relative;
-            width: calc(100% - 40px);
-            left: 0;
+            width: 100%;
+            box-sizing: border-box;
             padding: 20px;
             background: rgba(255, 255, 255, 0.5);
             border-radius: 0 0 5px 5px;
@@ -122,48 +127,53 @@
             margin-top: 30px;
             position: relative;
             z-index: 1;
-            justify-content: center; /* 居中对齐 */
+            justify-content: center;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .tabs.hidden {
-            opacity: 0.7; /* 提高隐藏时的可见度 */
+            opacity: 0.9; /* 提高整体可见度 */
         }
 
         .tab-button {
             padding: 10px 20px;
             border: none;
-            background: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.5); /* 提高背景不透明度 */
             cursor: pointer;
             font-size: 16px;
-            margin: 0 5px; /* 修改margin，使按钮间距均匀 */
+            margin: 0 5px;
             border-radius: 3px 3px 0 0;
             font-family: 'Cinzel', serif;
             letter-spacing: 1px;
             transition: all 0.3s ease;
-            opacity: 0.7;
-            min-width: 120px; /* 设置最小宽度使按钮大小一致 */
+            opacity: 0.8; /* 提高默认不透明度 */
+            min-width: 120px;
             text-align: center;
+            color: rgba(0, 0, 0, 0.8); /* 提高文字不透明度 */
         }
 
         .tabs.hidden .tab-button {
-            opacity: 0.5; /* 提高隐藏时的可见度 */
+            opacity: 0.8; /* 提高隐藏状态下的不透明度 */
+            background: rgba(255, 255, 255, 0.6); /* 提高背景不透明度 */
         }
 
         .tabs.hidden .tab-button:hover {
-            opacity: 0.8; /* 提高悬停时的可见度 */
+            opacity: 1;
             transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.8); /* 提高悬停时的背景不透明度 */
         }
 
         .tab-button:hover {
             opacity: 1;
             transform: translateY(-2px);
-            background: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.8);
         }
 
         .tab-button.active {
             border-bottom: 2px solid #007bff;
             color: #007bff;
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.8);
             opacity: 1;
             border-radius: 3px 3px 0 0;
         }
@@ -234,17 +244,74 @@
             transition: opacity 0.5s ease, transform 0.5s ease;
             display: none;
             position: relative;
-            width: calc(100% - 40px);
-            left: 0;
-            right: 0;
-            margin-left: auto;
-            margin-right: auto;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .intro-text.visible {
             opacity: 1;
             transform: translateY(0);
             display: block;
+        }
+
+        /* 添加响应式样式 */
+        @media screen and (max-width: 768px) {
+            .main-container {
+                padding: 10px;
+            }
+
+            .content-wrapper {
+                padding: 15px;
+            }
+
+            .intro-text {
+                padding: 15px;
+                font-size: 1.1rem;
+            }
+
+            .tab-content {
+                padding: 15px;
+            }
+
+            .tabs {
+                padding: 5px 10px;
+            }
+
+            .tab-button {
+                padding: 8px 15px;
+                font-size: 14px;
+                min-width: 100px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .main-container {
+                padding: 5px;
+            }
+
+            .content-wrapper {
+                padding: 10px;
+            }
+
+            .intro-text {
+                padding: 10px;
+                font-size: 1rem;
+            }
+
+            .tab-content {
+                padding: 10px;
+            }
+
+            .tabs {
+                padding: 5px;
+            }
+
+            .tab-button {
+                padding: 6px 12px;
+                font-size: 13px;
+                min-width: 80px;
+                margin: 0 3px;
+            }
         }
     </style>
 </head>
