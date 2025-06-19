@@ -360,6 +360,11 @@
                 margin: 0 4px;
                 border-radius: 5px; /* 手机端进一步减小圆角 */
             }
+
+            .site-logo {
+                width: 72px;
+                height: 72px;
+            }
         }
 
         /* 添加信纸样式 */
@@ -382,6 +387,24 @@
             margin-top: 40px;
             color: #666;
         }
+
+        /* 网站徽标样式 */
+        .site-logo {
+            display: block;
+            margin: 0 auto 18px auto;
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 50%;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.13);
+            background: #fff;
+            border: 3px solid #f5f5f5;
+            transition: transform 0.3s;
+        }
+        .site-logo:hover {
+            transform: scale(1.06) rotate(-2deg);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+        }
     </style>
 </head>
 <body>
@@ -400,6 +423,7 @@
         <!-- 包装所有内容 -->
         <div class="content-wrapper">
             <!-- 添加网站标题 -->
+            <img src="assets/SSAL.png" class="site-logo" alt="Seattle Salt and Light Logo">
             <h1 class="site-title">Seattle Salt and Light</h1>
             
             <div class="intro-text">
